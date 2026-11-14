@@ -1,0 +1,328 @@
+/* =======================================================================
+   Capabilities Section — Premium Infrastructure Monitoring UI
+   ======================================================================= */
+
+/* ── Google Fonts: Geist (variable) + JetBrains Mono ── */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+/* ── Scaling system ── */
+.capabilities-section {
+  --u: min(calc(100vw / 826), calc(100vh / 552));
+  --u-clamp: max(1px, var(--u));
+
+  position: relative;
+  background: #050505;
+  overflow: hidden;
+  padding: calc(64 * var(--u-clamp)) calc(24 * var(--u-clamp)) calc(80 * var(--u-clamp));
+  /* Negative margins to break out of parent padding */
+  margin: 0 calc(-1 * var(--parent-px, 32px));
+  width: calc(100% + 2 * var(--parent-px, 32px));
+}
+
+/* ── Vertical hairline guides ── */
+.capabilities-guide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.capabilities-guide--left {
+  left: 33.333%;
+}
+
+.capabilities-guide--right {
+  left: 66.666%;
+}
+
+/* ── Inner container ── */
+.capabilities-inner {
+  position: relative;
+  z-index: 1;
+  max-width: calc(720 * var(--u-clamp));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Top context strip ── */
+.capabilities-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(20 * var(--u-clamp));
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: calc(7.2 * var(--u-clamp));
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.275em;
+  color: rgba(255, 255, 255, 0.44);
+  margin-bottom: calc(24 * var(--u-clamp));
+  width: 100%;
+  white-space: nowrap;
+}
+
+.capabilities-strip__left {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8 * var(--u-clamp));
+}
+
+.capabilities-strip__rule {
+  display: inline-block;
+  width: calc(32 * var(--u-clamp));
+  height: 1px;
+  background: rgba(255, 255, 255, 0.44);
+  transform-origin: left center;
+}
+
+.capabilities-strip__right {
+  /* sits on the far side */
+}
+
+/* ── Main headline ── */
+.capabilities-headline-mask {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: calc(16 * var(--u-clamp));
+}
+
+.capabilities-headline {
+  font-family: 'Geist', var(--font-sans), system-ui, sans-serif;
+  font-weight: 473;
+  font-size: calc(47.3 * var(--u-clamp));
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+  text-align: center;
+  margin: 0;
+}
+
+.capabilities-headline__clarity {
+  background: linear-gradient(135deg, #FFC24A 0%, #E9931E 50%, #A85A0C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  filter: drop-shadow(0 0 18px rgba(233, 147, 30, 0.35))
+          drop-shadow(0 0 40px rgba(168, 90, 12, 0.15));
+}
+
+.capabilities-headline__rest {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ── Supporting description ── */
+.capabilities-desc {
+  font-family: 'Geist', var(--font-sans), system-ui, sans-serif;
+  font-weight: 290;
+  font-size: calc(13.4 * var(--u-clamp));
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.64);
+  text-align: center;
+  max-width: calc(440 * var(--u-clamp));
+  margin: 0 auto calc(40 * var(--u-clamp));
+}
+
+/* ── Cards grid ── */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(16 * var(--u-clamp));
+  width: 100%;
+}
+
+/* ── Individual card ── */
+.capabilities-card {
+  position: relative;
+  min-height: calc(273 * var(--u-clamp));
+  border-radius: calc(4 * var(--u-clamp));
+  background: rgba(255, 255, 255, 0.021);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: calc(20 * var(--u-clamp)) calc(18 * var(--u-clamp)) calc(24 * var(--u-clamp));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Amber radial glow overlay */
+.capabilities-card__glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(270 * var(--u-clamp));
+  height: calc(270 * var(--u-clamp));
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(190, 112, 22, 0.2) 0%,
+    transparent calc(135 * var(--u-clamp))
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Illustration stage */
+.capabilities-card__stage {
+  width: 100%;
+  height: calc(170 * var(--u-clamp));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.capabilities-illustration {
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: screen;
+}
+
+/* Card text */
+.capabilities-card__title {
+  font-family: 'Geist', var(--font-sans), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: calc(13 * var(--u-clamp));
+  color: rgba(255, 255, 255, 0.92);
+  margin: calc(8 * var(--u-clamp)) 0 calc(6 * var(--u-clamp));
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.capabilities-card__desc {
+  font-family: 'Geist', var(--font-sans), system-ui, sans-serif;
+  font-weight: 320;
+  font-size: calc(10.5 * var(--u-clamp));
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .capabilities-section *,
+  .capabilities-section *::before,
+  .capabilities-section *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+
+/* Tablet: stacked horizontal panels */
+@media (max-width: 1024px) {
+  .capabilities-section {
+    --u-clamp: max(1px, min(calc(100vw / 826), calc(100vh / 552)));
+  }
+
+  .capabilities-inner {
+    max-width: 92vw;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: calc(14 * var(--u-clamp));
+  }
+
+  .capabilities-card {
+    flex-direction: row;
+    align-items: center;
+    min-height: auto;
+    padding: calc(16 * var(--u-clamp));
+  }
+
+  .capabilities-card__stage {
+    width: calc(140 * var(--u-clamp));
+    height: calc(140 * var(--u-clamp));
+    flex-shrink: 0;
+    margin-right: calc(20 * var(--u-clamp));
+  }
+
+  .capabilities-card__glow {
+    width: calc(200 * var(--u-clamp));
+    height: calc(200 * var(--u-clamp));
+    left: 0;
+    transform: none;
+  }
+
+  .capabilities-card__title,
+  .capabilities-card__desc {
+    text-align: left;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .capabilities-section {
+    padding: 48px 16px 64px;
+    --parent-px: 16px;
+  }
+
+  .capabilities-strip {
+    font-size: max(8px, calc(7.2 * var(--u-clamp)));
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .capabilities-headline {
+    font-size: max(26px, calc(36 * var(--u-clamp)));
+  }
+
+  .capabilities-desc {
+    font-size: max(12px, calc(12 * var(--u-clamp)));
+    max-width: 100%;
+  }
+
+  .capabilities-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .capabilities-card__stage {
+    width: 100%;
+    height: 140px;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .capabilities-card__title,
+  .capabilities-card__desc {
+    text-align: center;
+  }
+
+  .capabilities-card__glow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Very wide screens — cap size */
+@media (min-width: 1600px) {
+  .capabilities-section {
+    --u-clamp: max(1px, min(calc(100vw / 826), calc(100vh / 552)));
+  }
+
+  .capabilities-inner {
+    max-width: 1100px;
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "PharmaOS System Console",
+  "short_name": "PharmaOS",
+  "description": "Next-Gen SaaS Pharmacy Management Enterprise Console",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050E1A",
+  "theme_color": "#00D4FF",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

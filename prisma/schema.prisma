@@ -1,0 +1,76 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserProfile {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  role      String   @default("ASSISTANT")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Medicine {
+  id                String         @id @default(cuid())
+  name              String
+  genericName       String?
+  batchNumber       String?
+  supplierName      String?
+  manufacturerName  String?
+  invoiceNumber     String?
+  manufacturingDate DateTime?
+  expiryDate        DateTime?
+  purchaseDate      DateTime?
+  purchasePrice     Float?         @default(0)
+  mrp               Float?         @default(0)
+  sellingPrice      Float?         @default(0)
+  gstPercentage     Float?         @default(0)
+  gstAmount         Float?         @default(0)
+  finalPrice        Float?         @default(0)
+  quantityAvailable Int?           @default(0)
+  minimumThreshold  Int?           @default(0)
+  storageCategory   String?        @default("ROOM_TEMP") // REFRIGERATED, ROOM_TEMP, CONTROLLED
+  purchaseStackId   String?
+  purchaseStack     PurchaseStack? @relation(fields: [purchaseStackId], references: [id], onDelete: SetNull)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model PurchaseStack {
+  id            String     @id @default(cuid())
+  supplierName  String?
+  invoiceNumber String?    @unique
+  purchaseDate  DateTime?
+  medicines     Medicine[]
+  totalAmount   Float?     @default(0)
+  totalGST      Float?     @default(0)
+  createdAt     DateTime   @default(now())
+}
+
+model Sale {
+  id            String   @id @default(cuid())
+  medicineId    String?
+  medicineName  String?
+  batchNumber   String?
+  quantitySold  Int?     @default(0)
+  sellingPrice  Float?   @default(0)
+  totalAmount   Float?   @default(0)
+  profitEarned  Float?   @default(0)
+  soldAt        DateTime @default(now())
+  invoiceNumber String?  @unique
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String?
+  entity    String?
+  entityId  String?
+  userId    String?
+  details   String?
+  createdAt DateTime @default(now())
+}
